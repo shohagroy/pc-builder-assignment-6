@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="px-4 divide-y bg-white border-t-2 text-gray-900">
       <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
         <div className="lg:w-1/3">
-          <Link href="/" class="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <div className={""}>
               <Image src="/logo.jpg" alt="Logo" height={30} width={150} />
             </div>
