@@ -10,7 +10,7 @@ import { ImPower } from "react-icons/im";
 import { FiMonitor } from "react-icons/fi";
 import { LuHardDrive } from "react-icons/lu";
 
-const Products = () => {
+const Products = ({ productsRes }) => {
   const [searchProcusts, setSearchProducts] = useState("CPU/Processor");
   const categories = [
     {
@@ -57,6 +57,8 @@ const Products = () => {
     },
   ];
 
+  const products = productsRes?.data;
+
   return (
     <section>
       <div className="mx-auto  max-w-7xl my-14">
@@ -94,18 +96,9 @@ const Products = () => {
         <div className="bg-white">
           <div className="px-2 ">
             <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              {products?.map((product) => (
+                <ProductCard key={product?.id} product={product} />
+              ))}
             </div>
           </div>
         </div>
@@ -115,3 +108,24 @@ const Products = () => {
 };
 
 export default Products;
+
+export async function getServerSideProps() {
+  try {
+    const res = await fetch(`${process.env.NEXT_APP_URL}/api/products`);
+    if (!res.ok) {
+      throw new Error("Fetch failed");
+    }
+    const productsRes = await res.json();
+
+    return {
+      props: {
+        productsRes,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      notFound: true, // Or handle the error gracefully based on your use case
+    };
+  }
+}

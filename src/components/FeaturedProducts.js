@@ -2,7 +2,7 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 
-const FeaturedProducts = () => {
+const FeaturedProducts = ({ products }) => {
   return (
     <section>
       <div className="mx-auto  max-w-7xl my-14">
@@ -14,18 +14,9 @@ const FeaturedProducts = () => {
         <div className="bg-white">
           <div className="px-2 ">
             <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              {products?.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
             </div>
           </div>
         </div>

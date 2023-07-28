@@ -3,14 +3,28 @@ import Link from "next/link";
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
+  const {
+    id,
+    Brand,
+    Price,
+    "Product Code": productCode,
+    "Regular Price": regularPrice,
+    Status,
+    category,
+    description,
+    images,
+    keyFeatures,
+    name,
+    specification,
+  } = product || {};
   return (
     <div className="relative">
-      <div className="group relative border px-3 lg:h-[450px]">
-        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md  lg:aspect-none group-hover:opacity-75 p-6 lg:p-0">
+      <div className="group relative border px-3 lg:h-[400px]">
+        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md  lg:aspect-none group-hover:opacity-75 p-6 ">
           <Image
-            src="https://www.startech.com.bd/image/cache/catalog/monitor/msi/mp223/mp223-06-200x200.webp"
-            alt="Front of men&#039;s Basic Tee in black."
+            src={images}
+            alt={name}
             height={100}
             width={100}
             layout="responsive"
@@ -20,14 +34,12 @@ const ProductCard = () => {
           <h3 className=" text-gray-500 hover:text-black duration-300">
             <Link href={`/products/653`}>
               <span aria-hidden="true" className="absolute inset-0"></span>
-              Acer Aspire 7 A715-42G-R2NE Ryzen 5 5500U GTX 1650 4GB Graphics
-              15.6 FHD Gaming Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit.
+              {name}
             </Link>
           </h3>
 
           <div className="flex lg:hidden justify-between w-full items-center">
-            <p className="text-xl font-bold text-[#EE4B23]">9909tk</p>
+            <p className="text-xl font-bold text-[#EE4B23]">{Price}</p>
 
             <p className="text-yellow-400 flex justify-center items-center">
               <AiFillStar />
@@ -37,7 +49,7 @@ const ProductCard = () => {
         </div>
         <div className="absolute left-0 bottom-3 w-full ">
           <div className="hidden lg:flex justify-between w-full items-center px-3">
-            <p className="text-xl font-bold text-[#EE4B23]">9909tk</p>
+            <p className="text-xl font-bold text-[#EE4B23]">{Price}</p>
             <p className="text-yellow-400 flex justify-center items-center">
               <AiFillStar />
               <span className="pl-1 text-black"> 4.5</span>
