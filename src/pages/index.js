@@ -24,7 +24,9 @@ export default function Home({ productsRes }) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(`${process.env.NEXT_APP_URL}/api/products`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products`
+    );
     if (!res.ok) {
       throw new Error("Fetch failed");
     }

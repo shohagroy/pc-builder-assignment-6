@@ -3,10 +3,10 @@ import RelatedProduct from "@/components/RelatedProduct";
 import Specification from "@/components/Specification";
 import Image from "next/image";
 import React from "react";
+// import fetch from "isomorphic-unfetch";
 
 const ProductDetails = ({ product }) => {
   const {
-    id,
     Brand,
     Price,
     "Product Code": productCode,
@@ -28,7 +28,7 @@ const ProductDetails = ({ product }) => {
               src={images}
               height={100}
               width={100}
-              alt=""
+              alt={name}
               layout="responsive"
             />
           </div>
@@ -69,21 +69,6 @@ const ProductDetails = ({ product }) => {
               ))}
             </div>
 
-            {/* <div className="hidden lg:flex w-full  justify-start items-center">
-              {[...Array(3)].map((_, i) => (
-                <button key={i} className="m-1 border rounded-md shadow-md">
-                  <Image
-                    width={100}
-                    height={100}
-                    alt=""
-                    src={
-                      "https://www.startech.com.bd/image/cache/catalog/television/rowa/32s52/32s52-02-74x74.webp"
-                    }
-                  />
-                </button>
-              ))}
-            </div> */}
-
             <div className="lg:my-10  my-5">
               <button className="py-3 px-10 rounded-md bg-black text-white">
                 Buy Now
@@ -120,7 +105,9 @@ export default ProductDetails;
 
 export async function getStaticPaths() {
   try {
-    const res = await fetch(`${process.env.NEXT_APP_URL}/api/products`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products`
+    );
     const productsRes = await res.json();
 
     const productIds = productsRes?.data?.map((product) => ({
@@ -129,7 +116,7 @@ export async function getStaticPaths() {
 
     return {
       paths: productIds,
-      fallback: false,
+      fallback: true,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -143,9 +130,11 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { productId } = params;
 
+  console.log(productId);
+
   try {
     const res = await fetch(
-      `${process.env.NEXT_APP_URL}/api/products/${productId}`
+      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products/${productId}`
     );
 
     if (!res.ok) {

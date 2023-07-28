@@ -1,7 +1,6 @@
 import React from "react";
 
 const Description = ({ description }) => {
-  console.log(description);
   return (
     <div className="p-4 my-3 bg-gray-50 rounded-md shadow-md">
       <p className="font-semibold text-2xl">Description</p>

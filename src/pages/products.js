@@ -111,7 +111,9 @@ export default Products;
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch(`${process.env.NEXT_APP_URL}/api/products`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products`
+    );
     if (!res.ok) {
       throw new Error("Fetch failed");
     }
