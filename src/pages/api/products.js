@@ -10,6 +10,13 @@ export default async function handler(req, res) {
       const data = fs.readFileSync(filePath, "utf8");
       const products = JSON.parse(data);
 
+      if (category === "all") {
+        console.log("products", products);
+        return res
+          .status(200)
+          .json({ message: "Products received successfully", data: products });
+      }
+
       if (category) {
         const filtered = products.filter(
           (product) => product.category === category
@@ -19,9 +26,12 @@ export default async function handler(req, res) {
           .status(200)
           .json({ message: "Products received successfully", data: filtered });
       } else {
-        res
-          .status(200)
-          .json({ message: "Products received successfully", data: products });
+        res.status(200).json({
+          message: "Products received successfully",
+          data: products
+            .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+            .slice(0, 20),
+        });
       }
     } catch (error) {
       console.error("Error reading file:", error);

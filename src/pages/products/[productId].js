@@ -77,7 +77,7 @@ const ProductDetails = ({ product }) => {
             <div className="flex items-center">
               <p>Rating </p>
               <div className="text-yellow-400 ml-2 flex items-center">
-                {[...Array(roundedRating)].map((_, index) => (
+                {[...Array(roundedRating)]?.map((_, index) => (
                   <AiFillStar key={index} />
                 ))}
                 {[...Array(Math.max(5 - roundedRating, 0))].map((_, index) => (
@@ -125,7 +125,7 @@ export default ProductDetails;
 export async function getStaticPaths() {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products`
+      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products?category=all`
     );
     const productsRes = await res.json();
 

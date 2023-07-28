@@ -5,14 +5,10 @@ import FeaturedProducts from "@/components/FeaturedProducts";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ productsRes }) {
-  const products = productsRes?.data
-    ?.sort(() => 0.5 - Math.random())
-    .slice(0, 12);
-
   return (
     <main className={`  ${inter.className}`}>
       <HeroSection />
-      <FeaturedProducts products={products} />
+      <FeaturedProducts products={productsRes?.data} />
     </main>
   );
 }
