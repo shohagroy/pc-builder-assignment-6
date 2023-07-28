@@ -18,7 +18,7 @@ const ProductCard = () => {
         </div>
         <div className="border-t py-2">
           <h3 className=" text-gray-500 hover:text-black duration-300">
-            <Link href="#">
+            <Link href={`/products/653`}>
               <span aria-hidden="true" className="absolute inset-0"></span>
               Acer Aspire 7 A715-42G-R2NE Ryzen 5 5500U GTX 1650 4GB Graphics
               15.6 FHD Gaming Lorem, ipsum dolor sit amet consectetur

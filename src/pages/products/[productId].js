@@ -1,3 +1,6 @@
+import Description from "@/components/Description";
+import RelatedProduct from "@/components/RelatedProduct";
+import Specification from "@/components/Specification";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -93,58 +96,9 @@ const ProductDetails = () => {
 
       <section className="my-10 grid grid-cols-1 lg:grid-cols-4 gap-4">
         <div className="col-span-3 ">
-          <div className="p-4 bg-gray-50 rounded-md shadow-md">
-            <p className="font-semibold text-2xl">Specification</p>
+          <Specification />
 
-            {[...Array(6)].map((_, i) => (
-              <div className="my-4 " key={i}>
-                <p className="bg-violet-300/20 p-3 font-bold rounded-md">
-                  Main Features
-                </p>
-
-                {[...Array(4)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="flex justify-start items-center p-2 border-b "
-                  >
-                    <p className="w-[300px]">Display Type</p>
-                    <p>LED</p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          <div className="p-4 my-3 bg-gray-50 rounded-md shadow-md">
-            <p className="font-semibold text-2xl">Description</p>
-
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="my-4">
-                <h2 className="text-2xl font-bold">
-                  ROWA 32S52 32 Inch HD Android Smart LED Television
-                </h2>
-                <p>
-                  ROWA 32S52 32 Inch Android Smart LED Television has a 32-inch
-                  HD display with a resolution of 1366×768 pixels. This
-                  television delivers stunning visual clarity and detail. You
-                  can enjoy a wider range of colors and brightness levels with
-                  HDR10 and experience crystal-clear audio with Dolby Audio
-                  technology. Dynamic Color Enhancement provides vivid and
-                  lifelike hues, making colors pop and adding depth to images.
-                  The ROWA 32S52 television also features HDMI 2.0, allowing you
-                  to connect your favorite devices and enjoy high-quality audio
-                  and video. With Chromecast Built-in, you can easily stream
-                  content from your smartphone or tablet directly to the TV.
-                  ROWA 32S52 32 Inch HD Android Smart TV provides access to all
-                  your favorite apps and streaming services, including popular
-                  services like Netflix, Amazon Prime Video, and YouTube.
-                  Built-in Wi-Fi allows for seamless streaming and connectivity.
-                  With multiple HDMI and USB ports, connecting your devices to
-                  the television is easy.
-                </p>
-              </div>
-            ))}
-          </div>
+          <Description />
         </div>
 
         <div className="bg-gray-50 rounded-md shadow-md max-h-[640px]">
@@ -154,23 +108,7 @@ const ProductDetails = () => {
             </h3>
 
             {[...Array(5)].map((_, i) => (
-              <Link href={"/"} key={i}>
-                <div className="py-3 border-t flex bg-white shadow-md my-1">
-                  <Image
-                    alt="related"
-                    height={100}
-                    width={100}
-                    src={
-                      "https://www.startech.com.bd/image/cache/catalog/television/rowa/32s52/32s52-02-74x74.webp"
-                    }
-                  />
-
-                  <div className="ml-2">
-                    <p>Dell E2016HV 19.5 LED Monitor</p>
-                    <p>tadjf</p>
-                  </div>
-                </div>
-              </Link>
+              <RelatedProduct key={i} />
             ))}
           </div>
         </div>

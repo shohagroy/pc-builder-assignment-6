@@ -170,10 +170,10 @@ const Navbar = () => {
             </div>
 
             <Link
-              href="#"
+              href="products"
               className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
             >
-              Features
+              Products
             </Link>
             <Link
               href="#"
@@ -190,7 +190,7 @@ const Navbar = () => {
           </div>
 
           <div>
-            <Link href={"/"}>
+            <Link href={"/pc_builder"}>
               <button className="hidden lg:block px-6 py-3 bg-black rounded-md text-white font-bold">
                 PC Builder
               </button>
@@ -280,10 +280,10 @@ const Navbar = () => {
                   </div>
 
                   <Link
-                    href="#"
+                    href="products"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
-                    Features
+                    Products
                   </Link>
                   <Link
                     href="#"
@@ -300,7 +300,7 @@ const Navbar = () => {
                   </Link>
 
                   <div>
-                    <Link href={"/"}>
+                    <Link href={"/pc_builder"}>
                       <button className="px-4 py-2 bg-red-500 rounded-md text-white font-bold">
                         PC Builder
                       </button>

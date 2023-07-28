@@ -4,7 +4,7 @@ import React from "react";
 
 const RelatedProduct = () => {
   return (
-    <Link href={"/"} key={i}>
+    <Link href={"/"}>
       <div className="py-3 border-t flex bg-white shadow-md my-1">
         <Image
           alt="related"
