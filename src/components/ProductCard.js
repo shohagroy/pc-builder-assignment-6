@@ -1,23 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const ProductCard = ({ product }) => {
-  const {
-    id,
-    Brand,
-    Price,
-    "Product Code": productCode,
-    "Regular Price": regularPrice,
-    Status,
-    category,
-    description,
-    images,
-    keyFeatures,
-    name,
-    specification,
-  } = product || {};
+  const { id, Price, images, name, rating } = product || {};
+
+  const roundedRating = Math.round(rating);
+
   return (
     <div className="relative">
       <div className="group relative border px-3 lg:h-[400px]">
@@ -41,19 +31,27 @@ const ProductCard = ({ product }) => {
           <div className="flex lg:hidden justify-between w-full items-center">
             <p className="text-xl font-bold text-[#EE4B23]">{Price}</p>
 
-            <p className="text-yellow-400 flex justify-center items-center">
-              <AiFillStar />
-              <span className="pl-1 text-black"> 4.5</span>
-            </p>
+            <div className="text-yellow-400 flex items-center">
+              {[...Array(roundedRating)].map((_, index) => (
+                <AiFillStar key={index} />
+              ))}
+              {[...Array(Math.max(5 - roundedRating, 0))].map((_, index) => (
+                <AiOutlineStar key={index} />
+              ))}
+            </div>
           </div>
         </div>
         <div className="absolute left-0 bottom-3 w-full ">
           <div className="hidden lg:flex justify-between w-full items-center px-3">
             <p className="text-xl font-bold text-[#EE4B23]">{Price}</p>
-            <p className="text-yellow-400 flex justify-center items-center">
-              <AiFillStar />
-              <span className="pl-1 text-black"> 4.5</span>
-            </p>
+            <div className="text-yellow-400 flex items-center">
+              {[...Array(roundedRating)].map((_, index) => (
+                <AiFillStar key={index} />
+              ))}
+              {[...Array(Math.max(5 - roundedRating, 0))].map((_, index) => (
+                <AiOutlineStar key={index} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

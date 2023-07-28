@@ -5,11 +5,6 @@ import FeaturedProducts from "@/components/FeaturedProducts";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ productsRes }) {
-  const loading = <h1>Loading...</h1>;
-
-  if (!productsRes?.data) {
-    return loading;
-  }
   const products = productsRes?.data
     ?.sort(() => 0.5 - Math.random())
     .slice(0, 12);

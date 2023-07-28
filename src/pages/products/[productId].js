@@ -3,7 +3,7 @@ import RelatedProduct from "@/components/RelatedProduct";
 import Specification from "@/components/Specification";
 import Image from "next/image";
 import React from "react";
-// import fetch from "isomorphic-unfetch";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = ({ product }) => {
   const {
@@ -17,8 +17,12 @@ const ProductDetails = ({ product }) => {
     images,
     keyFeatures,
     name,
+    rating,
     specification,
   } = product || {};
+
+  const roundedRating = Math.round(rating);
+
   return (
     <main className=" mx-3 lg:mx-auto  max-w-7xl ">
       <section className="grid grid-cols-1 lg:grid-cols-2">
@@ -69,6 +73,18 @@ const ProductDetails = ({ product }) => {
               ))}
             </div>
 
+            <div className="flex items-center">
+              <p>Rating </p>
+              <div className="text-yellow-400 ml-2 flex items-center">
+                {[...Array(roundedRating)].map((_, index) => (
+                  <AiFillStar key={index} />
+                ))}
+                {[...Array(Math.max(5 - roundedRating, 0))].map((_, index) => (
+                  <AiOutlineStar key={index} />
+                ))}
+              </div>
+            </div>
+
             <div className="lg:my-10  my-5">
               <button className="py-3 px-10 rounded-md bg-black text-white">
                 Buy Now
@@ -116,7 +132,7 @@ export async function getStaticPaths() {
 
     return {
       paths: productIds,
-      fallback: true,
+      fallback: false,
     };
   } catch (error) {
     console.error("Error fetching data:", error);

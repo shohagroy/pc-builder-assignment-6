@@ -26,7 +26,7 @@ const Navbar = () => {
     },
     {
       id: 2,
-      name: "Motherbord",
+      name: "Motherboard",
       link: "/",
       logo: <BsFillMotherboardFill />,
     },

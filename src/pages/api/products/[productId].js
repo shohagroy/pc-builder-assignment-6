@@ -6,7 +6,7 @@ export default function handler(req, res) {
     try {
       const { productId } = req.query;
 
-      const filePath = path.join(process.cwd(), "db", "processor.json");
+      const filePath = path.join(process.cwd(), "db", "data.json");
       const data = fs.readFileSync(filePath, "utf8");
       const products = JSON.parse(data);
 
