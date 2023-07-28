@@ -2,22 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const RelatedProduct = () => {
+const RelatedProduct = ({ product }) => {
+  const { id, name, Price, images } = product;
   return (
-    <Link href={"/"}>
-      <div className="py-3 border-t flex bg-white shadow-md my-1">
-        <Image
-          alt="related"
-          height={100}
-          width={100}
-          src={
-            "https://www.startech.com.bd/image/cache/catalog/television/rowa/32s52/32s52-02-74x74.webp"
-          }
-        />
-
+    <Link href={`/products/${id}`}>
+      <div className="py-3 border-t flex bg-white shadow-md my-1 p-2">
+        <Image alt="related" height={80} width={80} src={images} />
         <div className="ml-2">
-          <p>Dell E2016HV 19.5 LED Monitor</p>
-          <p>tadjf</p>
+          <p>{name}</p>
+          <p className="font-bold text-[#EE4B23]">{Price}</p>
         </div>
       </div>
     </Link>

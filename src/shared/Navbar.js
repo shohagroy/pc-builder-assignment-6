@@ -21,43 +21,43 @@ const Navbar = () => {
     {
       id: 1,
       name: "CPU/Processor",
-      link: "/",
+      link: "/products?category=CPU/Processor",
       logo: <BsFillCpuFill />,
     },
     {
       id: 2,
       name: "Motherboard",
-      link: "/",
+      link: "/products?category=Motherboard",
       logo: <BsFillMotherboardFill />,
     },
     {
       id: 3,
       name: "RAM",
-      link: "/",
+      link: "/products?category=RAM",
       logo: <CgSmartphoneRam />,
     },
     {
       id: 4,
       name: "Power Supply Unit",
-      link: "/",
+      link: "/products?category=Power Supply Unit",
       logo: <ImPower />,
     },
     {
       id: 5,
       name: "Storage Device",
-      link: "/",
+      link: "/products?category=Storage Device",
       logo: <LuHardDrive />,
     },
     {
       id: 6,
       name: "Monitor",
-      link: "/",
+      link: "/products?category=Monitor",
       logo: <FiMonitor />,
     },
     {
       id: 7,
       name: "Other",
-      link: "/",
+      link: "/products?category=Other",
       logo: <BsBuildingAdd />,
     },
   ];
@@ -206,7 +206,7 @@ const Navbar = () => {
             openMenu && "fixed"
           } w-full overflow-y-auto bg-white -mt-3 shadow-md`}
         >
-          <div className="flex items-center justify-between px-6 py-3">
+          <div className="flex items-center justify-between px-6 py-3 h-[10vh] ">
             <Link href="/">
               <div className={""}>
                 <Image src="/logo.jpg" alt="Logo" height={30} width={150} />
@@ -225,13 +225,14 @@ const Navbar = () => {
           <div
             className={`${
               openMenu ? "fixed" : "hidden"
-            } left-0 top-[7vh] border-t-2 w-full h-screen bg-white z-50`}
+            } left-0 top-[10vh] border-t-2 w-full h-screen bg-white z-50`}
           >
             <div className="mt-6">
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6 flex flex-col items-center">
                   <Link
-                    href="#"
+                    href="/"
+                    onClick={() => setOpenMenu(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Home
@@ -267,6 +268,7 @@ const Navbar = () => {
                           <Link
                             key={id}
                             href={link}
+                            onClick={() => setOpenMenu(false)}
                             className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                           >
                             <button className="flex justify-center items-center">
@@ -281,19 +283,22 @@ const Navbar = () => {
 
                   <Link
                     href="/products"
+                    onClick={() => setOpenMenu(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Products
                   </Link>
                   <Link
-                    href="#"
+                    href="/"
+                    onClick={() => setOpenMenu(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Marketplace
                   </Link>
 
                   <Link
-                    href="#"
+                    href="/"
+                    onClick={() => setOpenMenu(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Company

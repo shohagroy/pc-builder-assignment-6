@@ -10,15 +10,27 @@ export default function handler(req, res) {
       const data = fs.readFileSync(filePath, "utf8");
       const products = JSON.parse(data);
 
-      const product = products.find((product) => product.id === productId);
+      const product = products.find(
+        (product) => product.id.toString() === productId
+      );
 
       if (!product) {
         res.status(404).json({ message: "Product not found" });
       }
+      const relatedProduct = products
+        .filter(
+          (related) =>
+            related.category === product.category &&
+            related.name !== product.name
+        )
+        .slice(0, 5);
 
-      res
-        .status(200)
-        .json({ message: "Product received successfully", data: product });
+      product.related = relatedProduct;
+
+      res.status(200).json({
+        message: "Product received successfully",
+        data: product,
+      });
     } catch (error) {
       console.error("Error reading file:", error);
       res.status(500).json({ message: "Internal server error" });

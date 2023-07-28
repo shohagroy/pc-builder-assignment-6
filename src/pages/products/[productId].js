@@ -19,6 +19,7 @@ const ProductDetails = ({ product }) => {
     name,
     rating,
     specification,
+    related,
   } = product || {};
 
   const roundedRating = Math.round(rating);
@@ -101,15 +102,17 @@ const ProductDetails = ({ product }) => {
           <Description description={description} />
         </div>
 
-        <div className="bg-gray-50 rounded-md shadow-md max-h-[640px]">
+        <div className="rounded-md ">
           <div className=" mx-3">
             <h3 className="text-center text-2xl font-semibold p-2">
               Related Product
             </h3>
 
-            {[...Array(5)].map((_, i) => (
-              <RelatedProduct key={i} />
-            ))}
+            <div className="">
+              {related?.map((product, i) => (
+                <RelatedProduct key={i} product={product} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -146,11 +149,11 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { productId } = params;
 
-  console.log(productId);
-
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products/${productId}`
+      `${
+        process.env.NEXT_PUBLIC_NEXT_APP_URL
+      }/api/products/${productId.toString()}`
     );
 
     if (!res.ok) {

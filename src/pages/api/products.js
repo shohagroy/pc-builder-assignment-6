@@ -5,8 +5,6 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     const { category } = req.query;
 
-    console.log("category", category);
-
     try {
       const filePath = path.join(process.cwd(), "db", "data.json");
       const data = fs.readFileSync(filePath, "utf8");
@@ -16,8 +14,6 @@ export default async function handler(req, res) {
         const filtered = products.filter(
           (product) => product.category === category
         );
-
-        console.log(filtered);
 
         res
           .status(200)

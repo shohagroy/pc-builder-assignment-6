@@ -12,15 +12,8 @@ import { LuHardDrive } from "react-icons/lu";
 import { useRouter } from "next/router";
 
 const Products = ({ productsRes }) => {
-  const [query, setQuery] = useState("CPU/Processor");
   const router = useRouter();
-
-  useEffect(() => {
-    router.push({
-      pathname: "/products",
-      query: { category: query },
-    });
-  }, [query]);
+  const { query } = router;
 
   const categories = [
     {
@@ -77,15 +70,20 @@ const Products = ({ productsRes }) => {
           <p>Get Your Desired Product from Featured Category!</p>
         </div>
 
-        <div className="my-10 grid grid-cols-1 gap-4 lg:grid-cols-7 ">
+        <div className="my-10 grid grid-cols-4 mx-2 gap-4 lg:grid-cols-7 ">
           {categories?.map((category) => {
             const { id, name, logo } = category || {};
             return (
               <button
                 key={id}
-                onClick={() => setQuery(name)}
+                onClick={() =>
+                  router.push({
+                    pathname: "/products",
+                    query: { category: name },
+                  })
+                }
                 className={`flex flex-col justify-center items-center p-5 rounded-md border text-2xl shadow-md hover:text-[#EE4B23] duration-300 ${
-                  name === query && "text-[#EE4B23]"
+                  name === query?.category && "text-[#EE4B23]"
                 }`}
               >
                 {logo}
@@ -124,7 +122,9 @@ export async function getServerSideProps(context) {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products?category=${category}`
+      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products?category=${
+        category ? category : "CPU%2FProcessor"
+      }`
     );
     if (!res.ok) {
       throw new Error("Fetch failed");
