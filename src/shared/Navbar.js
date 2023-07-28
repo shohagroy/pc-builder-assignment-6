@@ -11,6 +11,7 @@ import { CgSmartphoneRam } from "react-icons/cg";
 import { ImPower } from "react-icons/im";
 import { FiMonitor } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
+import { LuHardDrive } from "react-icons/lu";
 
 const Navbar = () => {
   const [openCategory, setOpenCategory] = useState(false);
@@ -43,12 +44,18 @@ const Navbar = () => {
     },
     {
       id: 5,
+      name: "Storage Device",
+      link: "/",
+      logo: <LuHardDrive />,
+    },
+    {
+      id: 6,
       name: "Monitor",
       link: "/",
       logo: <FiMonitor />,
     },
     {
-      id: 6,
+      id: 7,
       name: "Other",
       link: "/",
       logo: <BsBuildingAdd />,
