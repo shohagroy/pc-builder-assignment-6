@@ -1,5 +1,5 @@
 import ProductCard from "@/components/ProductCard";
-import React from "react";
+import React, { useState } from "react";
 import {
   BsFillCpuFill,
   BsFillMotherboardFill,
@@ -11,6 +11,7 @@ import { FiMonitor } from "react-icons/fi";
 import { LuHardDrive } from "react-icons/lu";
 
 const Products = () => {
+  const [searchProcusts, setSearchProducts] = useState("CPU/Processor");
   const categories = [
     {
       id: 1,
@@ -70,7 +71,10 @@ const Products = () => {
             return (
               <button
                 key={id}
-                className="flex flex-col justify-center items-center p-5 rounded-md border text-2xl shadow-md hover:text-[#EE4B23] duration-300"
+                onClick={() => setSearchProducts(name)}
+                className={`flex flex-col justify-center items-center p-5 rounded-md border text-2xl shadow-md hover:text-[#EE4B23] duration-300 ${
+                  name === searchProcusts && "text-[#EE4B23]"
+                }`}
               >
                 {logo}
                 {/* <BsFillMotherboardFill className="text-3xl" /> */}
@@ -82,7 +86,7 @@ const Products = () => {
 
         <div className="mt-10 px-2">
           <div className="flex justify-between items-center bg-black p-2 text-white font-semibold rounded-md px-4">
-            <p>All TV</p>
+            <p>Categorise of {searchProcusts}</p>
             <p>Showing 1 to 20 of 20 (1Page)</p>
           </div>
         </div>
