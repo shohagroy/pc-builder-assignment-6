@@ -22,7 +22,7 @@ const FeaturedProducts = ({ products }) => {
         </div>
 
         <div className="flex justify-center items-center my-10">
-          <Link href={"/"}>
+          <Link href={"/products"}>
             <button className="px-6 py-3 bg-gray-600 hover:bg-black duration-300 rounded-md text-white font-bold">
               See More
             </button>

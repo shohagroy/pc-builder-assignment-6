@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="border-t py-2">
           <h3 className=" text-gray-500 hover:text-black duration-300">
-            <Link href={`/products/653`}>
+            <Link href={`/products/${id}`}>
               <span aria-hidden="true" className="absolute inset-0"></span>
               {name}
             </Link>

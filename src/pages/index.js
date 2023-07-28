@@ -22,17 +22,6 @@ export default function Home({ productsRes }) {
   );
 }
 
-// export async function getStaticProps() {
-//   const res = await fetch(`${process.env.NEXT_APP_URL}/api/products`);
-//   const productsRes = await res.json();
-
-//   return {
-//     props: {
-//       productsRes,
-//     },
-//   };
-// }
-
 export async function getStaticProps() {
   try {
     const res = await fetch(`${process.env.NEXT_APP_URL}/api/products`);
