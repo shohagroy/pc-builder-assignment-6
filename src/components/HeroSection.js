@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-const HeroSection = ({ openMenu }) => {
+const HeroSection = () => {
   const carouselSlider = [
     {
       imageURL:
@@ -30,9 +30,7 @@ const HeroSection = ({ openMenu }) => {
   const slidText = `${today} , our all outlets are open excpet Chattogram, Agrabad, Khulna, Rangpur, Rajshahi outlets. Additionally, our online activities are open.`;
 
   return (
-    <div
-      className={`${openMenu && "hidden"} bg-white mx-auto my-5 max-w-7xl z-0`}
-    >
+    <div className={` bg-white mx-auto my-5 max-w-7xl z-0`}>
       <div className="max-w-screen-2xl mx-3 lg:mx-auto lg:flex gap-4">
         <div className="w-full rounded-md overflow-hidden">
           <Carousel

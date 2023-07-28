@@ -12,8 +12,9 @@ import { ImPower } from "react-icons/im";
 import { FiMonitor } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 
-const Navbar = ({ openMenu, setOpenMenu }) => {
+const Navbar = () => {
   const [openCategory, setOpenCategory] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const categories = [
     {
@@ -55,7 +56,7 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
   ];
 
   return (
-    <header className="bg-white shadow-md z-50">
+    <header className="bg-white relative shadow-md z-50">
       <nav className="mx-auto  max-w-7xl">
         <div
           className=" hidden lg:flex mx-2 items-center justify-between pt-4"
@@ -119,9 +120,9 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
                   aria-hidden="true"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   />
                 </svg>
               </button>
@@ -242,9 +243,9 @@ const Navbar = ({ openMenu, setOpenMenu }) => {
                         aria-hidden="true"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
