@@ -23,7 +23,7 @@ const Login = () => {
           <button
             onClick={() =>
               signIn("google", {
-                callbackUrl: "http://localhost:3000",
+                callbackUrl: process.env.NEXT_PUBLIC_NEXT_APP_URL,
               })
             }
             className="flex w-full justify-center items-center rounded-md bg-red-500 p-3 my-2 text-sm  leading-6 text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 font-bold"
@@ -35,7 +35,7 @@ const Login = () => {
           <button
             onClick={() =>
               signIn("github", {
-                callbackUrl: "http://localhost:3000",
+                callbackUrl: process.env.NEXT_PUBLIC_NEXT_APP_URL,
               })
             }
             className="flex w-full justify-center items-center rounded-md bg-black p-3 my-2 text-sm  leading-6 text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 font-bold"
@@ -45,12 +45,12 @@ const Login = () => {
           </button>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Build your Dream PC
-            </a>
+            </Link>
           </p>
         </div>
       </div>

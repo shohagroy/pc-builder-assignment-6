@@ -55,7 +55,6 @@ const PcBuilder = () => {
   ];
 
   const pcBuildHandelar = () => {
-    console.log("click");
     dispatch(removeALlBuildComponents());
 
     swal("Success", "Your PC Build Order Created Successfully!", "success");
