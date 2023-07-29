@@ -125,7 +125,7 @@ export default ProductDetails;
 export async function getStaticPaths() {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products?category=all`
+      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products`
     );
     const productsRes = await res.json();
 
@@ -135,7 +135,7 @@ export async function getStaticPaths() {
 
     return {
       paths: productIds,
-      fallback: false,
+      fallback: true,
     };
   } catch (error) {
     console.error("Error fetching data:", error);

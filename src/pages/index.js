@@ -15,9 +15,7 @@ export default function Home({ productsRes }) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/products`
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/home`);
     if (!res.ok) {
       throw new Error("Fetch failed");
     }
@@ -31,7 +29,7 @@ export async function getStaticProps() {
   } catch (error) {
     console.error("Error fetching data:", error);
     return {
-      notFound: true, // Or handle the error gracefully based on your use case
+      notFound: true,
     };
   }
 }

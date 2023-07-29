@@ -18,6 +18,6 @@ export const authOptions = {
   },
 };
 
-console.log(process.env.NEXT_PUBLIC_NEXT_APP_GITHUB_SECRET);
+// console.log(process.env.NEXT_PUBLIC_NEXT_APP_GITHUB_SECRET);
 
 export default NextAuth(authOptions);

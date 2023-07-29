@@ -1,5 +1,5 @@
 import ProductCard from "@/components/ProductCard";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   BsFillCpuFill,
   BsFillMotherboardFill,
