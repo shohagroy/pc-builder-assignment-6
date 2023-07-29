@@ -9,6 +9,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = ({ product }) => {
   const {
+    id,
     Brand,
     Price,
     "Product Code": productCode,
@@ -111,7 +112,7 @@ const ProductDetails = ({ product }) => {
 
             <Description description={description} />
 
-            <Review />
+            <Review productId={id} />
           </div>
 
           <div className="rounded-md ">
