@@ -14,6 +14,8 @@ export default function handler(req, res) {
         (product) => product.id.toString() === productId
       );
 
+      // console.log(product);
+
       if (!product) {
         res.status(404).json({ message: "Product not found" });
       }

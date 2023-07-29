@@ -12,10 +12,15 @@ import { ImPower } from "react-icons/im";
 import { FiMonitor } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { LuHardDrive } from "react-icons/lu";
+import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [openCategory, setOpenCategory] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+
+  const { data: session } = useSession();
+
+  console.log(session?.user.email);
 
   const categories = [
     {
@@ -93,12 +98,21 @@ const Navbar = () => {
               />
             </div>
 
-            <Link
-              href="/login"
-              className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-            >
-              Log in <span aria-hidden="true">&rarr;</span>
-            </Link>
+            {session?.user.email ? (
+              <button
+                onClick={() => signOut()}
+                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+              >
+                Log Out <span aria-hidden="true">&rarr;</span>
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+              >
+                Log in <span aria-hidden="true">&rarr;</span>
+              </Link>
+            )}
           </div>
         </div>
 
@@ -314,12 +328,21 @@ const Navbar = () => {
                 </div>
 
                 <div className="py-6 flex justify-center items-center">
-                  <Link
-                    href="/login"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Log in <span aria-hidden="true">&rarr;</span>
-                  </Link>
+                  {session?.user.email ? (
+                    <button
+                      onClick={() => signOut()}
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Log Out <span aria-hidden="true">&rarr;</span>
+                    </button>
+                  ) : (
+                    <Link
+                      href="/login"
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Log in <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

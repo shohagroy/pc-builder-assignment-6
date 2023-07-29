@@ -1,5 +1,6 @@
 import Description from "@/components/Description";
 import RelatedProduct from "@/components/RelatedProduct";
+import Review from "@/components/Review";
 import Specification from "@/components/Specification";
 import Image from "next/image";
 import React from "react";
@@ -21,6 +22,8 @@ const ProductDetails = ({ product }) => {
     specification,
     related,
   } = product || {};
+
+  // console.log(product);
 
   const roundedRating = Math.round(rating);
 
@@ -100,6 +103,8 @@ const ProductDetails = ({ product }) => {
           <Specification specification={specification} />
 
           <Description description={description} />
+
+          <Review />
         </div>
 
         <div className="rounded-md ">
@@ -135,7 +140,7 @@ export async function getStaticPaths() {
 
     return {
       paths: productIds,
-      fallback: true,
+      fallback: false,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
