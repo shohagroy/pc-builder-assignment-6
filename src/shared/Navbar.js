@@ -317,7 +317,10 @@ const Navbar = () => {
                   </Link>
 
                   <div>
-                    <Link href={"/pc_builder"}>
+                    <Link
+                      href={"/pc_builder"}
+                      onClick={() => setOpenMenu(false)}
+                    >
                       <button className="px-4 py-2 bg-red-500 rounded-md text-white font-bold">
                         PC Builder
                       </button>

@@ -10,6 +10,7 @@ import { ImPower } from "react-icons/im";
 import { FiMonitor } from "react-icons/fi";
 import { LuHardDrive } from "react-icons/lu";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Products = ({ productsRes }) => {
   const router = useRouter();
@@ -63,54 +64,59 @@ const Products = ({ productsRes }) => {
   const products = productsRes?.data;
 
   return (
-    <section>
-      <div className="mx-auto  max-w-7xl my-14">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold p-1">Featured Category</h2>
-          <p>Get Your Desired Product from Featured Category!</p>
-        </div>
-
-        <div className="my-10 grid grid-cols-4 mx-2 gap-4 lg:grid-cols-7 ">
-          {categories?.map((category) => {
-            const { id, name, logo } = category || {};
-            return (
-              <button
-                key={id}
-                onClick={() =>
-                  router.push({
-                    pathname: "/products",
-                    query: { category: name },
-                  })
-                }
-                className={`flex flex-col justify-center items-center p-5 rounded-md border text-2xl shadow-md hover:text-[#EE4B23] duration-300 ${
-                  name === query?.category && "text-[#EE4B23]"
-                }`}
-              >
-                {logo}
-                <p className="font-bold text-sm p-1 ">{name}</p>
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="mt-10 px-2">
-          <div className="flex justify-between items-center bg-black p-2 text-white font-semibold rounded-md px-4">
-            <p>Categorise of {"searchQuery"}</p>
-            <p>Showing 1 to 20 of 20 (1Page)</p>
+    <>
+      <Head>
+        <title>Products | PC Builder</title>
+      </Head>
+      <section>
+        <div className="mx-auto  max-w-7xl my-14">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold p-1">Featured Category</h2>
+            <p>Get Your Desired Product from Featured Category!</p>
           </div>
-        </div>
 
-        <div className="bg-white">
-          <div className="px-2 ">
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {products?.map((product) => (
-                <ProductCard key={product?.id} product={product} />
-              ))}
+          <div className="my-10 grid grid-cols-4 mx-2 gap-4 lg:grid-cols-7 ">
+            {categories?.map((category) => {
+              const { id, name, logo } = category || {};
+              return (
+                <button
+                  key={id}
+                  onClick={() =>
+                    router.push({
+                      pathname: "/products",
+                      query: { category: name },
+                    })
+                  }
+                  className={`flex flex-col justify-center items-center p-5 rounded-md border text-2xl shadow-md hover:text-[#EE4B23] duration-300 ${
+                    name === query?.category && "text-[#EE4B23]"
+                  }`}
+                >
+                  {logo}
+                  <p className="font-bold text-sm p-1 ">{name}</p>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 px-2">
+            <div className="flex justify-between items-center bg-black p-2 text-white font-semibold rounded-md px-4">
+              <p>Categorise of {"searchQuery"}</p>
+              <p>Showing 1 to 20 of 20 (1Page)</p>
+            </div>
+          </div>
+
+          <div className="bg-white">
+            <div className="px-2 ">
+              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {products?.map((product) => (
+                  <ProductCard key={product?.id} product={product} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

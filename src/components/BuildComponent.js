@@ -31,7 +31,7 @@ const BuildComponent = ({ product, link }) => {
         </div>
         <div className="flex-auto">
           <Link
-            href={"/"}
+            href={`/products/${product?.id}`}
             className="block font-semibold text-sm lg:text-xl text-gray-900"
           >
             {product.name}

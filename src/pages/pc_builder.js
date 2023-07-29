@@ -10,6 +10,7 @@ import BuildComponent from "@/components/BuildComponent";
 import PcBuildHeader from "@/components/PcBuildHeader";
 import swal from "sweetalert";
 import { removeALlBuildComponents } from "@/redux/features/pc_build/pcBuildSlice";
+import Head from "next/head";
 
 const PcBuilder = () => {
   const { components } = useSelector((state) => state.pcBuild);
@@ -61,48 +62,54 @@ const PcBuilder = () => {
   };
 
   return (
-    <section>
-      <div className="mx-auto  max-w-7xl my-10  shadow-sm  rounded-md border">
-        <PcBuildHeader />
-        <div>
-          <div
-            className={` z-10 overflow-hidden  bg-white m-4 shadow-lg ring-1 ring-gray-900/5`}
-          >
-            <div className="p-4">
-              {categories?.map((category) => {
-                const { id, name, link } = category || {};
+    <>
+      <Head>
+        <title>Build Your Dream PC | PC Builder</title>
+      </Head>
 
-                const addedComponent = components.find(
-                  (product) => product.category === name
-                );
+      <section>
+        <div className="mx-auto  max-w-7xl my-10  shadow-sm  rounded-md border">
+          <PcBuildHeader />
+          <div>
+            <div
+              className={` z-10 overflow-hidden  bg-white m-4 shadow-lg ring-1 ring-gray-900/5`}
+            >
+              <div className="p-4">
+                {categories?.map((category) => {
+                  const { id, name, link } = category || {};
 
-                return addedComponent ? (
-                  <BuildComponent
-                    key={id}
-                    product={addedComponent}
-                    link={link}
-                  />
-                ) : (
-                  <CategoryComponent key={id} category={category} />
-                );
-              })}
+                  const addedComponent = components.find(
+                    (product) => product.category === name
+                  );
+
+                  return addedComponent ? (
+                    <BuildComponent
+                      key={id}
+                      product={addedComponent}
+                      link={link}
+                    />
+                  ) : (
+                    <CategoryComponent key={id} category={category} />
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="my-10 text-center">
-          <button
-            onClick={pcBuildHandelar}
-            disabled={components?.length !== 6}
-            className={` ${
-              components.length === 6 ? "bg-black" : "bg-black/40"
-            } py-3 px-6 text-white rounded-md font-bold `}
-          >
-            Build Now
-          </button>
+          <div className="my-10 text-center">
+            <button
+              onClick={pcBuildHandelar}
+              disabled={components?.length !== 6}
+              className={` ${
+                components.length === 6 ? "bg-black" : "bg-black/40"
+              } py-3 px-6 text-white rounded-md font-bold `}
+            >
+              Build Now
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

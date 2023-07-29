@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Review = () => {
+  const [review, setReview] = useState("");
+
   const handelReviewSubmit = (e) => {
+    console.log(review);
     e.preventDefault();
 
     console.log("call");
@@ -20,6 +23,8 @@ const Review = () => {
         <div>
           <form onSubmit={handelReviewSubmit}>
             <textarea
+              onChange={(e) => setReview(e.target.value)}
+              value={review}
               placeholder="review this product"
               className="w-full p-2 border border-black"
               rows="5"

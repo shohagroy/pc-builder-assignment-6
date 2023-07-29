@@ -2,6 +2,7 @@ import Description from "@/components/Description";
 import RelatedProduct from "@/components/RelatedProduct";
 import Review from "@/components/Review";
 import Specification from "@/components/Specification";
+import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
@@ -23,105 +24,112 @@ const ProductDetails = ({ product }) => {
     related,
   } = product || {};
 
-  // console.log(product);
-
   const roundedRating = Math.round(rating);
 
   return (
-    <main className=" mx-3 lg:mx-auto  max-w-7xl ">
-      <section className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="">
-          <div className="p-28">
-            <Image
-              src={images}
-              height={100}
-              width={100}
-              alt={name}
-              layout="responsive"
-            />
+    <>
+      <Head>
+        <title>Product Details | PC Builder</title>
+      </Head>
+      <main className=" mx-3 lg:mx-auto  max-w-7xl ">
+        <section className="grid grid-cols-1 lg:grid-cols-2">
+          <div className="">
+            <div className="p-28">
+              <Image
+                src={images}
+                height={100}
+                width={100}
+                alt={name}
+                layout="responsive"
+              />
+            </div>
           </div>
-        </div>
 
-        <div>
-          <div className="lg:my-14">
-            <h2 className="text-2xl font-semibold">{name}</h2>
-            <div className="flex justify-start items-center my-2 text-sm flex-wrap">
-              <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                Price: {Price}
-              </p>
-              <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                <del> Regular Price: {regularPrice}</del>
-              </p>
-              <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                Status: {Status}
-              </p>
-              <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                Product Code: {productCode}
-              </p>
-              <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                Brand: {Brand}
-              </p>
-            </div>
-
-            <div className="flex justify-start items-center font-bold">
-              <h2 className="text-xl font-semibold my-1">{"Category: "}</h2>
-              <p className="mx-2 p-2">{category}</p>
-            </div>
-
-            <h2 className="text-xl font-semibold my-3 lg:my-6">Key Features</h2>
-            <div className="flex justify-start items-start my-2 text-sm flex-wrap flex-col">
-              {keyFeatures?.map((feature) => (
-                <p key={feature} className=" pb-2 ">
-                  {feature}
+          <div>
+            <div className="lg:my-14">
+              <h2 className="text-2xl font-semibold">{name}</h2>
+              <div className="flex justify-start items-center my-2 text-sm flex-wrap">
+                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
+                  Price: {Price}
                 </p>
-              ))}
-            </div>
+                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
+                  <del> Regular Price: {regularPrice}</del>
+                </p>
+                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
+                  Status: {Status}
+                </p>
+                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
+                  Product Code: {productCode}
+                </p>
+                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
+                  Brand: {Brand}
+                </p>
+              </div>
 
-            <div className="flex items-center">
-              <p>Rating </p>
-              <div className="text-yellow-400 ml-2 flex items-center">
-                {[...Array(roundedRating)]?.map((_, index) => (
-                  <AiFillStar key={index} />
+              <div className="flex justify-start items-center font-bold">
+                <h2 className="text-xl font-semibold my-1">{"Category: "}</h2>
+                <p className="mx-2 p-2">{category}</p>
+              </div>
+
+              <h2 className="text-xl font-semibold my-3 lg:my-6">
+                Key Features
+              </h2>
+              <div className="flex justify-start items-start my-2 text-sm flex-wrap flex-col">
+                {keyFeatures?.map((feature) => (
+                  <p key={feature} className=" pb-2 ">
+                    {feature}
+                  </p>
                 ))}
-                {[...Array(Math.max(5 - roundedRating, 0))].map((_, index) => (
-                  <AiOutlineStar key={index} />
+              </div>
+
+              <div className="flex items-center">
+                <p>Rating </p>
+                <div className="text-yellow-400 ml-2 flex items-center">
+                  {[...Array(roundedRating)]?.map((_, index) => (
+                    <AiFillStar key={index} />
+                  ))}
+                  {[...Array(Math.max(5 - roundedRating, 0))].map(
+                    (_, index) => (
+                      <AiOutlineStar key={index} />
+                    )
+                  )}
+                </div>
+              </div>
+
+              <div className="lg:my-10  my-5">
+                <button className="py-3 px-10 rounded-md bg-black text-white">
+                  Buy Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="my-10 grid grid-cols-1 lg:grid-cols-4 gap-4">
+          <div className="col-span-3 ">
+            <Specification specification={specification} />
+
+            <Description description={description} />
+
+            <Review />
+          </div>
+
+          <div className="rounded-md ">
+            <div className=" mx-3">
+              <h3 className="text-center text-2xl font-semibold p-2">
+                Related Product
+              </h3>
+
+              <div className="">
+                {related?.map((product, i) => (
+                  <RelatedProduct key={i} product={product} />
                 ))}
               </div>
             </div>
-
-            <div className="lg:my-10  my-5">
-              <button className="py-3 px-10 rounded-md bg-black text-white">
-                Buy Now
-              </button>
-            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="my-10 grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div className="col-span-3 ">
-          <Specification specification={specification} />
-
-          <Description description={description} />
-
-          <Review />
-        </div>
-
-        <div className="rounded-md ">
-          <div className=" mx-3">
-            <h3 className="text-center text-2xl font-semibold p-2">
-              Related Product
-            </h3>
-
-            <div className="">
-              {related?.map((product, i) => (
-                <RelatedProduct key={i} product={product} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 };
 

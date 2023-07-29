@@ -31,7 +31,7 @@ const HeroSection = () => {
 
   return (
     <div className={` bg-white mx-auto my-5 max-w-7xl z-0`}>
-      <div className="max-w-screen-2xl mx-3 lg:mx-auto lg:flex gap-4">
+      <div className="max-w-screen-2xl mx-3 lg:mx-auto lg:flex gap-4 ">
         <div className="w-full rounded-md overflow-hidden">
           <Carousel
             className="z-0"
