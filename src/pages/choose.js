@@ -1,3 +1,4 @@
+import PcBuildHeader from "@/components/PcBuildHeader";
 import { addToBuilder } from "@/redux/features/pc_build/pcBuildSlice";
 import Head from "next/head";
 import Image from "next/image";
@@ -24,18 +25,7 @@ const Choose = ({ products }) => {
       </Head>
       <section>
         <div className="mx-auto  max-w-7xl my-10  shadow-sm  rounded-md border">
-          <div className="flex justify-between bg-white p-3">
-            <h2 className="p-3 text-xl font-semibold text-center  border-b">
-              PC Builder - Build Your Own Computer - Star Tech
-            </h2>
-
-            <div>
-              <button className="py-2 px-12 text-white bg-black rounded-md flex justify-center items-center flex-col">
-                <span className="font-bold text-xl">7000tk</span>
-                <span className="font-semibold">1 Items</span>
-              </button>
-            </div>
-          </div>
+          <PcBuildHeader />
 
           <div>
             <div

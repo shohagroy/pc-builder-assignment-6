@@ -78,6 +78,8 @@ const PcBuilder = () => {
                 {categories?.map((category) => {
                   const { id, name, link } = category || {};
 
+                  return <CategoryComponent key={id} category={category} />;
+
                   const addedComponent = components.find(
                     (product) => product.category === name
                   );
