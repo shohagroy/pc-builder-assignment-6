@@ -4,6 +4,7 @@ import {
   useGetProductReviewsQuery,
   usePostNewReviewMutation,
 } from "@/redux/features/reviews/reivewsApi";
+import swal from "sweetalert";
 
 const Review = ({ productId }) => {
   const [review, setReview] = useState("");
@@ -25,6 +26,8 @@ const Review = ({ productId }) => {
   const handelReviewSubmit = async (e) => {
     e.preventDefault();
     if (!userName) {
+      swal("Failed!", "Please Login then comment!", "error");
+
       console.log("Please login");
     } else {
       postNewReview(productReview);
