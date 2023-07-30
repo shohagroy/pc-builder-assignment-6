@@ -1,21 +1,18 @@
-import fs from "fs";
-import path from "path";
-import { v4 as uuidv4 } from "uuid";
+import connectDB from "../../../db/dbConnection";
 
 export default async function handler(req, res) {
+  const client = await connectDB();
+  const reviewCollections = await client.db("pc_builder").collection("reviews");
+
   if (req.method === "POST") {
     const publicReview = req.body;
-    const id = uuidv4();
-    publicReview.id = id;
 
     try {
-      const filePath = path.join(process.cwd(), "db", "reviews.json");
-      const data = fs.readFileSync(filePath, "utf8");
-      const reviews = JSON.parse(data);
+      const response = await reviewCollections.insertOne(publicReview);
 
-      reviews.push(publicReview);
-      fs.writeFileSync(filePath, JSON.stringify(reviews, null, 2));
-      res.status(200).json({ message: "Review added successfully!" });
+      res
+        .status(200)
+        .json({ message: "Review added successfully!", data: response });
     } catch (error) {
       console.error("Error reading file:", error);
       res.status(500).json({ message: "Internal server error" });
@@ -24,19 +21,11 @@ export default async function handler(req, res) {
     const { id } = req.query;
 
     try {
-      const filePath = path.join(process.cwd(), "db", "reviews.json");
-      const data = fs.readFileSync(filePath, "utf8");
-      const reviews = JSON.parse(data);
-
-      const productReviews = reviews.filter(
-        (review) => review.productId.toString() === id
-      );
-
-      console.log(productReviews);
+      const reviews = await reviewCollections.find({ productId: id }).toArray();
 
       res.status(200).json({
         message: "Reviews received successfully!",
-        data: productReviews,
+        data: reviews,
       });
     } catch (error) {
       console.error("Error reading file:", error);

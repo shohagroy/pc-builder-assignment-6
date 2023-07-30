@@ -56,7 +56,7 @@ const Review = ({ productId }) => {
       <div>
         {data?.data?.map((review) => {
           return (
-            <div key={review?.id} className="my-4">
+            <div key={review?._id} className="my-4">
               <div>
                 <p className="font-semibold">
                   {review?.userName} -{" "}
